@@ -18,5 +18,7 @@ tree: $(SOURCE_DIR)tree.c | make_dir
 	$(COMPILER) $(FLAGS) -I$(INCLUDES_DIR) $(SOURCE_DIR)tree.c -o $(OUTPUT_DIR)/tree.o
 test_tree: $(SOURCE_DIR)tree.c $(TEST_DIR)test_tree.c  | make_dir
 	$(COMPILER) $(FLAGS) -I$(INCLUDES_DIR) $(SOURCE_DIR)tree.c $(TEST_DIR)test_tree.c -o $(OUTPUT_DIR)/test_tree.o
+test_merge_sort: $(SOURCE_DIR)merge_sort.c $(TEST_DIR)test_merge_sort.c  | make_dir
+	$(COMPILER) $(FLAGS) -I$(INCLUDES_DIR) $(SOURCE_DIR)merge_sort.c $(TEST_DIR)test_merge_sort.c -o $(OUTPUT_DIR)/test_merge_sort.o
 make_dir:
 	mkdir -p $(OUTPUT_DIR)
