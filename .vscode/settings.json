@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdlib.h": "c",
-        "queue.h": "c"
+        "queue.h": "c",
+        "type_traits": "cpp"
     }
 }
