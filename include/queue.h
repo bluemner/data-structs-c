@@ -1,5 +1,5 @@
-#ifndef __bluemner_queue_h__
-#define __bluemner_queue_h__
+#ifndef __DATA_STRUCTS_QUEUE_H__
+#define __DATA_STRUCTS_QUEUE_H__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,7 +38,7 @@ type dequeue(queue* q);
 
 /**
  *  Pointers, so many pointers,
- *  Returns: a brand new queue 
+ *  @returns: a brand new queue 
  *    (really is a pointer to an address of the 
  *     pointer to the queue but who cares about
  *     the little details  )

@@ -1,5 +1,5 @@
-#ifndef __bluemner_queue_h__
-#define __bluemner_queue_h__
+#ifndef __DATA_STRUCTS_MERGE_SORT_H__
+#define __DATA_STRUCTS_MERGE_SORT_H__
 
 #include <stdio.h>
 #include <stdlib.h>

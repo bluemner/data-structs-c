@@ -1,5 +1,5 @@
-#ifndef __bluemner_tree_h__
-#define __bluemner_tree_h__
+#ifndef __DATA_STRUCTS_TREE_H__
+#define __DATA_STRUCTS_TREE_H__
 
 #include<stdio.h>
 #include<stdlib.h>
