@@ -9,29 +9,52 @@
 typedef struct queue queue;
 typedef struct queue_node queue_node;
 
-/**
- * Prints the current queue 
+/* 
+ * Queue data structure
  */
-void print_queue(queue* q, print_mode mode);
+struct queue{
+    size_t size; /*Current number of elements in queue*/
+    queue_node* next; /*Next queue node element*/
+    queue_node* last; /*Previous queue element*/
+};
+
+/*
+ * Queue node
+ */
+struct queue_node{
+    pointer value;
+    queue_node* target;
+};
 
 /**
- * Queue goes boom, not really just 
- * set to zero but boom sounds better
+ * Prints the current queue 
+ * @param[out] q queue
+ * @param[in] mode print mode level
+ */
+void print_queue(queue* q, const print_mode mode);
+
+/**
+ * Deallocated the queue
+ * @param[out] q queue to deallocate
  */
 void destory_queue(queue* q);
 
 /**
  * Add pointer to the end of the queue
+ * @param[out] q queue to add item to 
+ * @param[in] item pointer to item you want to queue
  */
-size_t enqueue(queue* q, pointer t);
+size_t enqueue(queue* q, const pointer item);
 
 /**
  * Return the size of the queue
+ * @param[out] queue to get size
  */ 
 size_t size(queue* q);
 
 /**
  * Remove the next element an return the value
+ * @param[out] queue to remove element
  */
 pointer dequeue(queue* q);
 
@@ -50,15 +73,4 @@ queue* make_queue();
  */
 queue_node* make_queue_node(pointer t);
 
-
-struct queue{
-    size_t size;
-    queue_node* next;
-    queue_node* last;
-};
-
-struct queue_node{
-    pointer value;
-    queue_node* target;
-};
 #endif
