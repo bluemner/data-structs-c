@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
+#include <stdint.h>
 #include "queue.h"
 
 size_t PASSED = 0;
@@ -17,9 +18,10 @@ queue* test_make_queue(){
  * Test Enqueue
  */
 void test_enqueue(queue* q, size_t max){
-    size_t i;
+    uint8_t i;
+    uint8_t values[10] = {0,1,2,3,4,5,6,7,8,9};
     for( i =0; i < max; i++){
-        enqueue(q,i);
+        enqueue(q,&values[i]);
         assert(i+1 == size(q) && "Enqueue:: Size error\n");
     }
     assert(max == size(q));
@@ -29,8 +31,8 @@ void test_enqueue(queue* q, size_t max){
 void test_dequeue(queue* q, size_t max){
     size_t i;
     for( i =0; i < max; i++){
-        type v = dequeue(q);
-        assert(v == ((type) i) && "Dequeue:: Value return error\n");
+        pointer v = dequeue(q);
+        assert(v == ((pointer) i) && "Dequeue:: Value return error\n");
         assert(max-i-1 == size(q) && "Dequeue:: Size error\n");
     }
     ++PASSED;
@@ -38,7 +40,6 @@ void test_dequeue(queue* q, size_t max){
 
 void test_destory_queue(queue* q){
     destory_queue(q);
-
     assert(q->next == NULL &&  "Destory:: Next was not set to null");
     assert(q->last == NULL &&  "Destory:: Last was not set to null");
     assert(q->size == 0 &&  "Destory:: Size was not set to zero");

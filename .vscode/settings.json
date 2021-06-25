@@ -1,10 +1,12 @@
 {
     "files.associations": {
+        "*.cnf": "properties",
         "stdlib.h": "c",
         "queue.h": "c",
         "type_traits": "cpp",
         "cstdint": "cpp",
         "stdint.h": "c",
-        "compare": "cpp"
+        "compare": "cpp",
+        "typeinfo": "cpp"
     }
 }

@@ -2,8 +2,7 @@
 #define __DATA_STRUCTS_LIST_H__
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef void* pointer;
+#include "common.h"
 typedef struct list_node_s list_node;
 
 typedef struct list_node_s{
@@ -19,11 +18,6 @@ typedef struct list_s  {
 } list ;
 
 
-typedef enum list_print_modes
-{
-   LIST_PRINT_VERBOSE = 0,
-   LIST_PRINT_FAST = 1
-} list_print_mode;
 
 
 /**
@@ -53,7 +47,8 @@ list_node* list_node_create(list_node* source, const pointer value);
 void list_destory_node(list_node* node);
 
 /**
- * @note the pointer will not be deallocated. 
+ * Deallocate the list nodes attached to the pointer *l .  
+ * This will will not deallocate the pointer *l.
  * @param[out] l list that will be modifed
  */
 void list_destory(list* l);
@@ -74,7 +69,7 @@ void list_add(list *l, const pointer value);
  *          VERBOSE - Everything 
  *          FAST - Skips loops (basic)
  */
-void list_print(list *l, const list_print_mode mode);
+void list_print(list *l, const print_mode mode);
 /**
  * Size of list
  * Returns:

@@ -22,11 +22,11 @@ test_list: list $(TEST_DIR)test_list.c  | make_dir
 ########################################################################################
 queue: $(SOURCE_DIR)queue.c | make_dir
 	$(COMPILER) $(FLAGS) $(LIBRARY_FLAGS) $(INCLUDES) $(SOURCE_DIR)queue.c -o $(OUTPUT_DIR)/libqueue.so
-test_queue: $(SOURCE_DIR)queue.c $(TEST_DIR)test_queue.c  | make_dir
-	$(COMPILER) $(FLAGS) $(INCLUDES) $(OUTPUT_DIR)/libqueue.so $(SOURCE_DIR)queue.c $(TEST_DIR)test_queue.c -o $(OUTPUT_DIR)/test_queue.o
+test_queue: queue $(TEST_DIR)test_queue.c  | make_dir
+	$(COMPILER) $(FLAGS) $(INCLUDES) $(OUTPUT_DIR)/libqueue.so $(TEST_DIR)test_queue.c -o $(OUTPUT_DIR)/test_queue.o
 ########################################################################################
 tree: $(SOURCE_DIR)tree.c | make_dir
-	$(COMPILER) $(FLAGS) $(INCLUDES) $(SOURCE_DIR)tree.c -o $(OUTPUT_DIR)/tree.o
+	$(COMPILER) $(FLAGS) $(INCLUDES) $(SOURCE_DIR)tree.c -o $(OUTPUT_DIR)/tree.so
 test_tree: $(SOURCE_DIR)tree.c $(TEST_DIR)test_tree.c  | make_dir
 	$(COMPILER) $(FLAGS) $(INCLUDES) $(SOURCE_DIR)tree.c $(TEST_DIR)test_tree.c -o $(OUTPUT_DIR)/test_tree.o
 ########################################################################################

@@ -3,17 +3,16 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "common.h"
 
-typedef long type;
+
 typedef struct queue queue;
 typedef struct queue_node queue_node;
-const int VERBOSE;
-const int FAST; 
 
 /**
  * Prints the current queue 
  */
-void print_queue(queue* q, int mode);
+void print_queue(queue* q, print_mode mode);
 
 /**
  * Queue goes boom, not really just 
@@ -22,9 +21,9 @@ void print_queue(queue* q, int mode);
 void destory_queue(queue* q);
 
 /**
- * Add item to the end of the queue
+ * Add pointer to the end of the queue
  */
-size_t enqueue(queue* q, type t);
+size_t enqueue(queue* q, pointer t);
 
 /**
  * Return the size of the queue
@@ -34,7 +33,7 @@ size_t size(queue* q);
 /**
  * Remove the next element an return the value
  */
-type dequeue(queue* q);
+pointer dequeue(queue* q);
 
 /**
  *  Pointers, so many pointers,
@@ -49,7 +48,7 @@ queue* make_queue();
 /**
  * Are these really just a waste of space?
  */
-queue_node* make_queue_node(type t);
+queue_node* make_queue_node(pointer t);
 
 
 struct queue{
@@ -59,7 +58,7 @@ struct queue{
 };
 
 struct queue_node{
-    type value;
+    pointer value;
     queue_node* target;
 };
 #endif

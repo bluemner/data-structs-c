@@ -1,9 +1,6 @@
 #include "queue.h"
 
-const int VERBOSE = 0;
-const int FAST = 1;
-
-void print_queue(queue* q, int mode){
+void print_queue(queue* q, print_mode mode){
     if(q == NULL){
         printf("No Queue here...\n");
         return; 
@@ -11,12 +8,12 @@ void print_queue(queue* q, int mode){
 
     printf("Queue::\n\tsize::%zu\n", q->size);
     
-    if(mode == FAST) return;   
+    if(mode & PRINT_MODE_SUMMARY) return;   
     printf("\tValues::\n");
     queue_node* current = q->next;
     while(current != NULL)
     {
-        printf("\t\tvalue::%zu\n",current->value);
+        printf("\t\tvalue::%p\n",current->value);
         current = current->target;
     }
 }
@@ -35,7 +32,7 @@ void destory_queue(queue* q){
     q=NULL;
 }
 
-size_t enqueue(queue* q, type t){
+size_t enqueue(queue* q, pointer t){
     queue_node * qn  = make_queue_node(t);
     qn->value = t;
     if(q->last != NULL)
@@ -51,10 +48,10 @@ size_t size(queue* q){
     return q->size;
 }
 
-type dequeue(queue* q){
+pointer dequeue(queue* q){
     queue_node* qn = q->next;
-    q->next =  qn->target;
-    type result = qn->value;
+    q->next = qn->target;
+    pointer result = qn->value;
     free(qn);
     q->size--;
     return result;
@@ -66,7 +63,7 @@ queue* make_queue(){
     return q;
 }
 
-queue_node* make_queue_node(type t){
+queue_node* make_queue_node(pointer t){
     queue_node* qn = malloc(sizeof(queue_node));
     qn->value =  t;
     qn->target = NULL;

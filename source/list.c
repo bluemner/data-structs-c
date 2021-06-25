@@ -49,7 +49,7 @@ void list_add(list *l, const pointer value){
     l->count = 1 + l->count;
 }
 
-void list_print(list *l, const list_print_mode mode){
+void list_print(list *l, const print_mode mode){
     if(l == NULL || l->root == NULL){
         printf("No list here...\n");
         return; 
@@ -57,7 +57,7 @@ void list_print(list *l, const list_print_mode mode){
 
     list_node* current = l->root->target;
     printf("List::\n\tsize::%zu\n", l->count);
-    if(mode == LIST_PRINT_FAST) return;
+    if(mode & PRINT_MODE_SUMMARY) return;
     printf("\tValues::\n");
     while(current != NULL){
         printf("\t\tvalue::%p\n",current->value);
@@ -69,7 +69,7 @@ size_t list_size(list *l){
     return l->count;
 }
 
-pointer list_remove(list *l,const pointer value){
+pointer list_remove(list *l, const pointer value){
     if(l == NULL || l->root == NULL) return NULL;
     list_node* current = l->root->target; 
     list_node* temp  = NULL;
